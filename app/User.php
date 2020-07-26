@@ -43,4 +43,3 @@ class User extends Authenticatable
     }
 }
 
-$ git config --global user.email ic.raw.king@gmail.com
