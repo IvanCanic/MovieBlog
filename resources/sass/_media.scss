@@ -1,0 +1,19 @@
+@media only screen and (max-width: 768px) {
+    .posts {
+        article {
+            flex: 0 0 98%;
+        }
+
+        article.single {
+            flex: 0 0 98%;
+        }
+
+        .no-posts {
+            flex: 0 0 98%;
+        }
+
+        aside {
+            flex: 0 0 98%;
+        }
+    }
+}

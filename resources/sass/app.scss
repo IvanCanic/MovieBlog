@@ -1,0 +1,79 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Posts settings
+@import 'posts';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background-image: url('/images/bg2.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+::selection {
+    color: $white-color;
+    background: $primary-color;
+}
+
+.vv-container {
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.vv-error {
+    color: $red;
+    padding: 0.5rem;
+}
+
+footer .footer-meta {
+    display: flex;
+    justify-content: center;
+    background: $white-color;
+    padding: 1rem;
+    
+    a {
+        margin-left:0.5rem;
+    }
+}
+
+.vv-pagination {
+    nav  {
+
+        .pagination {
+            display:flex;
+            justify-content: center;
+
+            li {
+
+                a {
+                    padding:0.5rem 0.75rem;
+                }
+            }
+        }
+    }
+}
+
+// Responsive
+@import 'media';
