@@ -18,8 +18,8 @@ class PostController extends Controller
 
     public function index() {
 
-        $posts = Post::orderBy('title')->paginate(4);
-        $posts->load('category');
+        $posts = Post::with('comments')->orderBy('title')->paginate(4);
+        $posts->load('category', 'user');
 
         $categories = Category::all();
         
@@ -35,7 +35,7 @@ class PostController extends Controller
 
     public function show($id) {
 
-        $post = Post::findOrFail($id);
+        $post = Post::with('comments')->findOrFail($id);
 
         $categories = Category::all();
 
@@ -171,7 +171,10 @@ class PostController extends Controller
         $categories = Category::all();
 
         // 1 solution
-        $posts = Post::where('category_id', $categoryName)->get();
+        //$posts = Post::where('category_id', $categoryName)->get();
+
+        $posts = Post::with('category')->where('category_id', $categoryName)->get();
+        $posts->load('user');
         
         return view('posts.archive', compact('posts', 'categories'));
 
@@ -184,7 +187,7 @@ class PostController extends Controller
 
     public function author($id) {
 
-        $posts = Post::where('user_id', $id)->get();
+        $posts = Post::with('user', 'category')->where('user_id', $id)->get();
 
         return view('posts.archive', compact('posts'));
     }
@@ -197,7 +200,7 @@ class PostController extends Controller
 
         $s = $request->search;
 
-        $posts = Post::where('description', 'LIKE', '%'.$s.'%')->orWhere('title', 'LIKE', '%'.$s.'%')->get();
+        $posts = Post::with('comments')->where('description', 'LIKE', '%'.$s.'%')->orWhere('title', 'LIKE', '%'.$s.'%')->get();
 
         //dd($posts);
 

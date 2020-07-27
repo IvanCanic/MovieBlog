@@ -5,7 +5,7 @@
 @section('content')
 <section class="vv-container">
     <div class="posts">
-        @if($category)
+        @if($category->count() > 0)
         @foreach($category as $cat)
             @foreach($cat as $post)
             <article>
